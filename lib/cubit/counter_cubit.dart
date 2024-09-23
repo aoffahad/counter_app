@@ -17,4 +17,9 @@ class CounterCubit extends Cubit<CounterCubitState> {
 
     emit(CounterValueUpdated(counter: counter));
   }
+
+  void counterReset() {
+    counter = 0;
+    emit(CounterValueUpdated(counter: counter));
+  }
 }

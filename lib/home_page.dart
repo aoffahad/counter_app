@@ -15,7 +15,7 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          title: Text("Counter App"),
+          title: const Text("Counter App"),
         ),
         body: BlocBuilder<CounterCubit, CounterCubitState>(
           builder: (context, state) {
@@ -33,6 +33,7 @@ class _HomePageState extends State<HomePage> {
                         icon: const Icon(
                           Icons.remove,
                           size: 30,
+                          weight: 600,
                         ),
                       ),
                       (state is CounterValueUpdated)
@@ -59,7 +60,27 @@ class _HomePageState extends State<HomePage> {
                             size: 30,
                           ))
                     ],
-                  )
+                  ),
+                  const SizedBox(
+                    height: 10,
+                  ),
+                  FloatingActionButton(
+                    onPressed: () {
+                      context.read<CounterCubit>().counterReset();
+                    },
+                    backgroundColor: Colors.green,
+                    splashColor: Colors.amber.withOpacity(0.2),
+                    hoverColor: Colors.black,
+                    child: const Text(
+                      "Reset",
+                      style: TextStyle(color: Colors.white),
+                    ),
+                  ),
+                  // IconButton(
+                  //     onPressed: () {
+                  //       context.read<CounterCubit>().counterReset();
+                  //     },
+                  //     icon: Icon(Icons.loop)),
                 ],
               ),
             );
